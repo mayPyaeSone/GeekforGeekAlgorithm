@@ -5,6 +5,8 @@
  */
 package Matrix;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
@@ -21,27 +23,80 @@ public class Matrix_Boundary_Traversal {
         {13, 14, 15, 16}
 
         };
-        test(arr);
-    }
+        //test(arr);
 
-    static void test(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
+        int[][] arr2 = new int[][]{{1, 2, 3, 4},
+        {5, 6, 7, 8},};
+        //test(arr2);
+
+        int[][] arr3 = new int[][]{{1, 2}, {3, 4},
+        {5, 6}
+
+        };
+        boundaryTraversal(arr3);
+    }
+    /**
+     * This is own solution.
+     * @param mat
+     * @return 
+     */
+    static ArrayList<Integer> boundaryTraversal(int mat[][]) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < mat.length; i++) {
 
             if (i == 0) {
-                for (int j = 0; j < arr[i].length; j++) {
-                    System.out.print(arr[i][j] + ", ");
+                for (int j = 0; j < mat[i].length; j++) {
+                    list.add(mat[i][j]);
                 }
-            } else if (i == arr.length - 1) {
-                for (int j = arr[i].length - 1; j >= 0; j--) {
-                    System.out.print(arr[i][j] + ", ");
+            } else if (i == mat.length - 1) {
+                for (int j = mat[i].length - 1; j >= 0; j--) {
+                    list.add(mat[i][j]);
                 }
             } else {
-                System.out.print(arr[i][arr[i].length - 1] + ", ");
+                list.add(mat[i][mat[i].length - 1]);
             }
 
         }
-        for (int i = arr.length - 2; i >= 1; i--) {
-            System.out.print(arr[i][0]+", ");
+        for (int i = mat.length - 2; i >= 1; i--) {
+            list.add(mat[i][0]);
+        }
+        return list;
+    }
+    static final int R = 4;
+    static final int C = 4;
+
+    /**
+     * Editorial Method
+     *
+     * @param mat
+     */
+    static void bTraversal(int[][] mat) {
+        if (R == 1) {
+            for (int i = 0; i < C; i++) {
+                System.out.print(mat[0][i] + " ");
+            }
+        } else if (C == 1) {
+            for (int i = 0; i < R; i++) {
+                System.out.print(mat[i][0] + " ");
+            }
+        } else {
+            // Top row
+            for (int i = 0; i < C; i++) {
+                System.out.print(mat[0][i] + " ");
+            }
+            // Right column
+            for (int i = 1; i < R; i++) {
+                System.out.print(mat[i][C - 1] + " ");
+            }
+            // Bottom row
+            for (int i = C - 2; i >= 0; i--) {
+                System.out.print(mat[R - 1][i] + " ");
+            }
+            // Left column
+            for (int i = R - 2; i >= 1; i--) {
+                System.out.print(mat[i][0] + " ");
+            }
         }
     }
 }
