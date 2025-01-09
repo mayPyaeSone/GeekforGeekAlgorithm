@@ -23,7 +23,7 @@ public class Matrix_Boundary_Traversal {
         {13, 14, 15, 16}
 
         };
-        //test(arr);
+         boundaryTraversal_(arr);
 
         int[][] arr2 = new int[][]{{1, 2, 3, 4},
         {5, 6, 7, 8},};
@@ -33,70 +33,47 @@ public class Matrix_Boundary_Traversal {
         {5, 6}
 
         };
-        boundaryTraversal(arr3);
+        //boundaryTraversal(arr3);
+
+        int[][] arr4 = new int[][]{{1}, {2}, {3}
+        };
+        //boundaryTraversal_(arr4);
     }
+
     /**
-     * This is own solution.
+   
+     * Editorial Mehtod .
      * @param mat
      * @return 
      */
-    static ArrayList<Integer> boundaryTraversal(int mat[][]) {
-        ArrayList<Integer> list = new ArrayList<>();
+    static ArrayList<Integer> boundaryTraversal_(int mat[][]) {
+        int n = mat.length;
+        int m = mat[0].length;
+        ArrayList<Integer> output = new ArrayList<Integer>();
 
-        for (int i = 0; i < mat.length; i++) {
-
-            if (i == 0) {
-                for (int j = 0; j < mat[i].length; j++) {
-                    list.add(mat[i][j]);
-                }
-            } else if (i == mat.length - 1) {
-                for (int j = mat[i].length - 1; j >= 0; j--) {
-                    list.add(mat[i][j]);
-                }
-            } else {
-                list.add(mat[i][mat[i].length - 1]);
-            }
-
-        }
-        for (int i = mat.length - 2; i >= 1; i--) {
-            list.add(mat[i][0]);
-        }
-        return list;
-    }
-    static final int R = 4;
-    static final int C = 4;
-
-    /**
-     * Editorial Method
-     *
-     * @param mat
-     */
-    static void bTraversal(int[][] mat) {
-        if (R == 1) {
-            for (int i = 0; i < C; i++) {
-                System.out.print(mat[0][i] + " ");
-            }
-        } else if (C == 1) {
-            for (int i = 0; i < R; i++) {
-                System.out.print(mat[i][0] + " ");
-            }
+        // base case if number of row or column is 1 then adding all elements.
+        if (n == 1) {
+            int i = 0;
+            while (i < m) output.add(mat[0][i++]);
+        } else if (m == 1) {
+            int i = 0;
+            while (i < n) output.add(mat[i++][0]);
         } else {
-            // Top row
-            for (int i = 0; i < C; i++) {
-                System.out.print(mat[0][i] + " ");
-            }
-            // Right column
-            for (int i = 1; i < R; i++) {
-                System.out.print(mat[i][C - 1] + " ");
-            }
-            // Bottom row
-            for (int i = C - 2; i >= 0; i--) {
-                System.out.print(mat[R - 1][i] + " ");
-            }
-            // Left column
-            for (int i = R - 2; i >= 1; i--) {
-                System.out.print(mat[i][0] + " ");
-            }
+            // we take care of fact that we don't add any number multiple times.
+
+            // traversing first row and adding elements in the list.
+            for (int j = 0; j < m; j++) output.add(mat[0][j]);
+
+            // traversing last column and adding elements in the list.
+            for (int j = 1; j < n; j++) output.add(mat[j][m - 1]);
+
+            // traversing last row and adding elements in the list.
+            for (int j = m - 2; j >= 0; j--) output.add(mat[n - 1][j]);
+
+            // traversing first column and adding elements in the list.
+            for (int j = n - 2; j >= 1; j--) output.add(mat[j][0]);
         }
+        // returning the list.
+        return output;
     }
 }
