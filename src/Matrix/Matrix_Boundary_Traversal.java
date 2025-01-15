@@ -49,7 +49,7 @@ public class Matrix_Boundary_Traversal {
     static ArrayList<Integer> boundaryTraversal_(int mat[][]) {
         int n = mat.length;
         int m = mat[0].length;
-        ArrayList<Integer> output = new ArrayList<Integer>();
+        ArrayList<Integer> output = new ArrayList<>();
 
         // base case if number of row or column is 1 then adding all elements.
         if (n == 1) {
