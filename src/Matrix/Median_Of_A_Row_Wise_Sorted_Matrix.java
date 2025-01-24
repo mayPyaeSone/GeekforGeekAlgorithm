@@ -13,8 +13,12 @@ import java.util.Arrays;
  */
 public class Median_Of_A_Row_Wise_Sorted_Matrix {
 
-    static public int matMed(int mat[][], int r, int c) {
-        int min = mat[0][0], max = mat[0][c - 1];
+    static public int matMed(int mat[][]) {
+        // int min = mat[0][0], max = mat[0][c - 1];
+        int r = mat.length;// row of mat[][]
+        int c = mat[0].length;//column of mat[][]
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
         for (int i = 1; i < r; i++) {
             if (mat[i][0] < min) {
                 min = mat[i][0];
@@ -57,7 +61,7 @@ public class Median_Of_A_Row_Wise_Sorted_Matrix {
         int m[][] = {{5, 10, 20, 30, 40},
         {1, 2, 3, 4, 6},
         {11, 13, 15, 17, 19}};
-        System.out.println("Median is " + matMed(m, r, c));
+        System.out.println("Median is " + matMed(m));
 
     }
 }
