@@ -40,6 +40,9 @@ public class Determinant_Of_A_Matrix_GetDeterminant_Editorial {
         if (n == 1) {
             return matrix[0][0];
         }
+        if (n == 2) {
+            return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+        }
 
         //creating a list to store Cofactors.
         int temp[][] = new int[n][n];
@@ -58,7 +61,8 @@ public class Determinant_Of_A_Matrix_GetDeterminant_Editorial {
         //returning the determinant.
         return D;
     }
- public static void main(String[] args) {
+
+    public static void main(String[] args) {
         int[][] mat = {
             {1, 0, 2, -1},
             {3, 0, 0, 5},
@@ -68,5 +72,7 @@ public class Determinant_Of_A_Matrix_GetDeterminant_Editorial {
 
         // Function call
         System.out.println("Determinant of the matrix is: " + determinantOfMatrix(mat, 4));
+//        int[][] mat1 = {{5}};
+//        System.out.println("Determinant of the matrix is: " + determinantOfMatrix(mat1, 1));
     }
 }
