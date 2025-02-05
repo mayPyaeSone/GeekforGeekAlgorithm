@@ -17,9 +17,9 @@ public class Sum_Of_Upper_And_Lower_Triangles {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //        int mat[][] = new int[][]{{6, 5, 4},
-        //        {1, 2, 5},
-        //        {7, 9, 7}};
+        int mat3[][] = new int[][]{{6, 5, 4},
+        {1, 2, 5},
+        {7, 9, 7}};
         ;
 //        int mat[][] = new int[][]{{1, 2},
 //           {3, 4}};
@@ -32,6 +32,8 @@ public class Sum_Of_Upper_And_Lower_Triangles {
         for (int i : sumTriangles_gpt(mat, 6)) {
             System.out.println(i);
         }
+        //111,107 sumTriangles_own
+        //sumTriangles_gpt
 
     }
 // Function to return sum of upper and lower triangles of a matrix.
@@ -59,7 +61,7 @@ public class Sum_Of_Upper_And_Lower_Triangles {
         return list;
     }
 
-    static ArrayList<Integer> sumTriangles_ownButWrong(int mat[][], int n) {
+    static ArrayList<Integer> sumTriangles_own(int mat[][], int n) {
         ArrayList<Integer> list = new ArrayList<>();
         int downSum = 0;
         int upSum = 0;
@@ -72,9 +74,15 @@ public class Sum_Of_Upper_And_Lower_Triangles {
         for (; i < n;) {
             downSum += mat[i++][j];
         }
-        i--;
-        while (i > 1 && j > 1) {
-            downSum += mat[--i][--j];
+        i -= 2;
+        j--;
+        while (i > 0 && j > 0) {
+            for (int k = j; k < n - 1; k++) {
+                downSum += mat[i][k];
+            }
+            i--;
+            j--;
+
         }
         list.add(downSum);
         //upSum
@@ -89,15 +97,44 @@ public class Sum_Of_Upper_And_Lower_Triangles {
         for (; i >= 0;) {
             upSum += mat[i--][j];
         }
-        i++;
-        //j++;
-        System.out.println(i + "  " + j);
-        while (i < n - 2 && j < n - 2) {
-            upSum += mat[++i][++j];
+        i += 2;
+        j++;
+
+        while (i < n - 1 && j < n - 1) {
+            for (int k = j; k > 0; k--) {
+                upSum += mat[i][k];
+            }
+            i++;
+            j++;
         }
         list.add(upSum);
         return list;
     }
 
-    // Test function
+    static ArrayList<Integer> sumTriangles_Editorial(int matrix[][], int n) {
+        int upper = 0;
+        int lower = 0;
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                //diagonal elements will be common in both upper and lower sum.
+                if (i == j) {
+                    upper += matrix[i][j];
+                    lower += matrix[i][j];
+                } //else if j>i, this condition satisfies only for upper triangle.
+                else if (j > i) {
+                    upper += matrix[i][j];
+                } //else if i>j, this condition satisfies only for lower triangle.
+                else if (j < i) {
+                    lower += matrix[i][j];
+                }
+            }
+        }
+
+        //storing both the sum in a list and returning the list.
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        result.add(upper);
+        result.add(lower);
+        return result;
+    }
 }
