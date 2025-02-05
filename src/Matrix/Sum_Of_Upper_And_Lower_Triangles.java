@@ -29,7 +29,7 @@ public class Sum_Of_Upper_And_Lower_Triangles {
         {10, 1, 2, 4, 8, 6},
         {9, 10, 2, 9, 2, 10},
         {9, 5, 5, 9, 3, 2}};
-        for (int i : sumTriangles_gpt(mat, 6)) {
+        for (int i : sumTriangles_Editorial(mat, 6)) {
             System.out.println(i);
         }
         //111,107 sumTriangles_own
@@ -48,10 +48,12 @@ public class Sum_Of_Upper_And_Lower_Triangles {
                 // Upper Triangle (including diagonal)
                 if (j >= i) {
                     upSum += mat[i][j];
+                    System.out.println("upSum: i:" + i + " j:" + j);
                 }
                 // Lower Triangle (including diagonal)
                 if (j <= i) {
                     downSum += mat[i][j];
+                    System.out.println("downSum: i:" + i + " j:" + j);
                 }
             }
         }
