@@ -19,11 +19,17 @@ public class Making_Matrix_Beautiful {
         int[][] mat2 = {{1, 2, 3}, {4, 2, 3}, {3, 2, 1}};
         int[][] mat3 = {{0, 2}, {3, 4}};
 
-        System.out.println("Minimum operations for mat1: " + minOperationsToMakeBeautiful(mat1)); // Output: 4
+        //System.out.println("Minimum operations for mat1: " + minOperationsToMakeBeautiful(mat1)); // Output: 4
         System.out.println("Minimum operations for mat2: " + minOperationsToMakeBeautiful(mat2)); // Output: 6
-        System.out.println("Minimum operations for mat3: " + minOperationsToMakeBeautiful(mat3)); // Output: 5
+        //System.out.println("Minimum operations for mat3: " + minOperationsToMakeBeautiful(mat3)); // Output: 5
     }
 
+    /**
+     * Standard Code.
+     *
+     * @param mat
+     * @return
+     */
     public static int minOperationsToMakeBeautiful(int[][] mat) {
         int n = mat.length;
         int[] rowSum = new int[n];
@@ -51,5 +57,44 @@ public class Making_Matrix_Beautiful {
         }
 
         return operations;
+    }
+
+    public static int findMinOperation_editorial(int[][] mat) {
+        int n = mat.length;
+        int ans = 0, maxi = 0;
+        int[] rowSum = new int[n];
+        int[] colSum = new int[n];
+
+        // Row sums and finding maximum row sum
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = 0; j < n; j++) {
+                sum += mat[i][j];
+            }
+            rowSum[i] = sum;
+            maxi = Math.max(maxi, rowSum[i]);
+        }
+
+        // Column sums and finding maximum column sum
+        for (int j = 0; j < n; j++) {
+            int sum = 0;
+            for (int i = 0; i < n; i++) {
+                sum += mat[i][j];
+            }
+            colSum[j] = sum;
+            maxi = Math.max(maxi, colSum[j]);
+        }
+
+        // Calculating the minimum operations
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int minAdd = Math.min(maxi - rowSum[i], maxi - colSum[j]);
+                ans += minAdd;
+                rowSum[i] += minAdd;
+                colSum[j] += minAdd;
+            }
+        }
+
+        return ans;
     }
 }
