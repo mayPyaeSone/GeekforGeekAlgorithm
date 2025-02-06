@@ -5,8 +5,6 @@
  */
 package sorting.builin.methods.array.sorts;
 
-import sorting.builin.methods.*;
-import sorting.*;
 import java.util.Arrays;
 import java.util.Collections;
 
