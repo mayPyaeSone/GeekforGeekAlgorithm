@@ -56,7 +56,7 @@ public class Interchanging_The_Row_Of_The_Matrix {
     }
 
     /**
-     * Swap real palce in array and time complexity is
+     * Swap real palce in array and time complexity is  O(n1 * m1)
      *
      * @param matrix
      */

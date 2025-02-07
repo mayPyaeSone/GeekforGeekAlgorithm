@@ -7,12 +7,14 @@ matrix[][] = {{1, 2, 3, 4},
               {13, 14, 15,16}}
 Output: 
 4 2 3 1 8 6 7 5 12 10 11 9 16 14 15 13
+
 Explanation:
 Matrix is as follow:
 1 2 3 4
 5 6 7 8
 9 10 11 12
 13 14 15 16
+
 After exchanging first column with 
 last column, we have matrix as follows:
 4 2 3 1
