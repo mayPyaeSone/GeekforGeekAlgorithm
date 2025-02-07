@@ -49,21 +49,21 @@ public class Boolean_Matrix {
     }
 
     static void booleanMatrix(int mat[][]) {
-        int allOne[] = new int[mat.length];
-        int modiCol[] = new int[mat[0].length];
+        int[] oneRow = new int[mat.length];
+        int[] oneCol = new int[mat[0].length];
 
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i][j] == 1) {
-                    allOne[i] = 1;
-                    modiCol[j] = 1;
+                    oneRow[i] = 1;
+                    oneCol[j] = 1;
                     
                 }
             }
         }
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                if (allOne[i] == 1 || modiCol[j] == 1) {
+                if (oneRow[i] == 1 || oneCol[j] == 1) {
                     mat[i][j] = 1;
                 }
 
