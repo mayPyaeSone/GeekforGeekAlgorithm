@@ -26,4 +26,10 @@ public class Context {
             System.out.println();
         }
     }
+    public static void print1DArray(int arr[]){
+        System.out.println();
+        for(int i: arr){
+            System.out.print(i+" ");
+        }
+    }
 }
