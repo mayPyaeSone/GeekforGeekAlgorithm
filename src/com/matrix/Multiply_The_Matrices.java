@@ -9,7 +9,7 @@ package com.matrix;
  *
  * @author User
  */
-public class Problem_2__Multiply_The_Matrices {
+public class Multiply_The_Matrices {
 
     /**
      * @param args the command line arguments
