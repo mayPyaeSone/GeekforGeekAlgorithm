@@ -1,7 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Input:
+hashSize = 10
+sizeOfArray = 4 
+Array[] = {4,14,24,44}
+Output:
+-1 -1 -1 -1 4 14 24 44 -1 -1
+Explanation: 
+4%10=4, So put 4 in hashtable[4].
+Now, 14%10=4, but hashtable[4] is already filled so put 14 in the next slot and so on for further elements.
+
+
+Input:
+hashSize = 10
+sizeOfArray = 4 
+Array[] = {9,99,999,9999}
+Output:
+99 999 9999 -1 -1 -1 -1 -1 -1 9
+Explanation: 
+9%10=9, So put 9 in hashtable[9]. 
+Now, 99%10=9, but hashtable[9] is already filled so put 99 in the (99+1)%10 = 0 slot so 99 goes into hashtable[0] and so on for further elements.
  */
 package com.hashing;
 
@@ -23,7 +40,7 @@ public class Linear_Probing_In_Hashing {
         int arr_2[] = {9, 99, 999, 9999};
         //Context.print1DArray(linearProbing_editorial(10, arr_2, 4));// hashSize = 10 sizeOfArray = 4 
         int arr_3[] = {9, 4, 12, 18, 10, 17, 15, 3, 15, 0, 20};
-        Context.print1DArray(linearProbing_editorial(6, arr_3, 11));// hashSize = 6 sizeOfArray = 11
+        Context.print1DArray(linearProbing(6, arr_3, 11));// hashSize = 6 sizeOfArray = 11
 
     }
 
@@ -31,10 +48,7 @@ public class Linear_Probing_In_Hashing {
         int hash[] = new int[hash_size];
         Arrays.fill(hash, -1);
         for (int i = 0; i < sizeOfArray; i++) {
-            int index = arr[i] % 10;
-            if (index > hash_size) {
-                System.out.println("Enter this block!");
-            }
+            int index = arr[i] % hash_size;
             if (hash[index] != -1) {
                 int j = 1;
                 while (hash[index] != -1 && index < hash_size) {
