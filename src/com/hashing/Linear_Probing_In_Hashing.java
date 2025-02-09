@@ -40,23 +40,36 @@ public class Linear_Probing_In_Hashing {
         int arr_2[] = {9, 99, 999, 9999};
         //Context.print1DArray(linearProbing_editorial(10, arr_2, 4));// hashSize = 10 sizeOfArray = 4 
         int arr_3[] = {9, 4, 12, 18, 10, 17, 15, 3, 15, 0, 20};
-        Context.print1DArray(linearProbing(6, arr_3, 11));// hashSize = 6 sizeOfArray = 11
+        //Context.print1DArray(linearProbing(6, arr_3, 11));// hashSize = 6 sizeOfArray = 11
+
+        int arr_4[] = {11, 15, 1, 13, 14, 9, 9, 20};
+        Context.print1DArray(linearProbing(7, arr_4, 8));// hashSize = 6 sizeOfArray = 11
 
     }
 
     static int[] linearProbing(int hash_size, int arr[], int sizeOfArray) {
         int hash[] = new int[hash_size];
         Arrays.fill(hash, -1);
-        for (int i = 0; i < sizeOfArray; i++) {
+        int count = 0;
+        for (int i = 0; i < sizeOfArray && count < hash_size; i++) {
             int index = arr[i] % hash_size;
+            int flag = 0;
             if (hash[index] != -1) {
                 int j = 1;
                 while (hash[index] != -1 && index < hash_size) {
-                    index = (arr[i] + j) % 10;
+                    if (hash[index] == arr[i]) {
+                        flag = 1;
+                        break;
+                    }
+                    index = (arr[i] + j) % hash_size;
                     j++;
                 }
             }
+            if (flag == 1) {
+                continue;
+            }
             hash[index] = arr[i];
+            count++;
 
         }
         return hash;
