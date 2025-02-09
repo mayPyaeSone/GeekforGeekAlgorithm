@@ -62,7 +62,7 @@ public class Linear_Probing_In_Hashing {
             int flag = 0;
             if (hash[index] != -1) {
                 int j = 1;
-                while (hash[index] != -1 && index < hash_size) {
+                while (hash[index] != -1) {
                     if (hash[index] == arr[i]) {
                         flag = 1;
                         break;
