@@ -46,7 +46,13 @@ public class Linear_Probing_In_Hashing {
         Context.print1DArray(linearProbing(7, arr_4, 8));// hashSize = 6 sizeOfArray = 11
 
     }
-
+    /**
+     * Standard code. My code.
+     * @param hash_size
+     * @param arr
+     * @param sizeOfArray
+     * @return 
+     */
     static int[] linearProbing(int hash_size, int arr[], int sizeOfArray) {
         int hash[] = new int[hash_size];
         Arrays.fill(hash, -1);
@@ -74,7 +80,13 @@ public class Linear_Probing_In_Hashing {
         }
         return hash;
     }
-
+    /**
+     * Editorial code.
+     * @param hash_size
+     * @param arr
+     * @param array_size
+     * @return 
+     */
     static int[] linearProbing_editorial(int hash_size, int arr[], int array_size) {
         int hash_table[] = new int[hash_size];
 
