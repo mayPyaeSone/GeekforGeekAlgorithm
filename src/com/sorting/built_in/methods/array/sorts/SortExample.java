@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sorting.builin.methods.array.sorts;
+package com.sorting.built_in.methods.array.sorts;
 
 import java.util.Arrays;
 import java.util.Collections;
