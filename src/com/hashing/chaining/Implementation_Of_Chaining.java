@@ -12,7 +12,7 @@ package com.hashing.chaining;
 import java.util.*;
 
 public class Implementation_Of_Chaining {
-
+//The main class is MyHash
 }
 
 class MyHash {
@@ -35,25 +35,28 @@ class MyHash {
 
     boolean search(int key) {
         int index = key % BUCKET;
-        LinkedList<Integer> list = table.get(index);
-        for (int i : list) {
-            if (key == i) {
-                return true;
-            }
-        }
-        return false;
+        return table.get(index).contains(key);
+//        LinkedList<Integer> list = table.get(index);
+//        for (int i : list) {
+//            if (key == i) {
+//                return true;
+//            }
+//        }
+//        return false;
+
     }
 
     void delete(int key) {
         int index = key % BUCKET;
-        LinkedList<Integer> list = table.get(index);
-        {
-            for (int i = 0; i < list.size(); i++) {
-                if (key == list.get(i)) {
-                    list.remove(i);
-                }
-            }
-        }
+        table.get(index).remove(key);
+//        LinkedList<Integer> list = table.get(index);
+//        {
+//            for (int i = 0; i < list.size(); i++) {
+//                if (key == list.get(i)) {
+//                    list.remove(i);
+//                }
+//            }
+//        }
     }
 }
 
