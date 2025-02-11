@@ -7,8 +7,13 @@ package com.hashing.chaining;
 
 import java.util.*;
 
+class Implementation_Of_Chaining_Article_Method_2 {
+
+}
 // Node class for linked list implementation
+
 class Node<T> {
+
     String key;
     T value;
     Node<T> next;
@@ -30,6 +35,7 @@ class Node<T> {
 
 // HashMap class (unordered_map equivalent)
 public class UnorderedMap<T> {
+
     private int numOfElements, capacity;
     private Node<T>[] arr;
 

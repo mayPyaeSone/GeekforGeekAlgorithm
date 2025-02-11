@@ -11,7 +11,7 @@ package com.hashing.chaining;
  */
 import java.util.*;
 
-public class Implementation_Of_Chaining {
+public class Implementation_Of_Chaining_Video_Standard {
 //The main class is MyHash
 }
 

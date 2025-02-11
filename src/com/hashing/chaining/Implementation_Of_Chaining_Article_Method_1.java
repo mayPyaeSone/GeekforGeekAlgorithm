@@ -6,7 +6,9 @@
 package com.hashing.chaining;
 
 import java.util.*;
-
+public class Implementation_Of_Chaining_Article_Method_1{
+    
+}
 class Hash {
     int BUCKET;    // No. of buckets
 
