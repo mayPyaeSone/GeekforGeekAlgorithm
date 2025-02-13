@@ -36,7 +36,8 @@ class Node<T> {
 // HashMap class (unordered_map equivalent)
 class UnorderedMap<T> {
 
-    private int numOfElements, capacity;
+    private int numOfElements;
+    private int capacity;
     private Node<T>[] arr;
     static int count;
 
@@ -129,14 +130,14 @@ class UnorderedMap<T> {
         System.out.println("Manish :" + count);
         mp.insert("Vartika", 14);
         System.out.println("Vartika :" + count);
-        mp.insert("ITT", 5);
-        System.out.println("ITT :" + count);
-        mp.insert("elite_Programmer", 4);
-        System.out.println("elite_Programmer :" + count);
-        mp.insert("pluto14", 14);
-        System.out.println("pluto14 :" + count);
-        mp.insert("GeeksForGeeks", 11);
-        System.out.println("GeeksForGeeks :" + count);
+//        mp.insert("ITT", 5);
+//        System.out.println("ITT :" + count);
+//        mp.insert("elite_Programmer", 4);
+//        System.out.println("elite_Programmer :" + count);
+//        mp.insert("pluto14", 14);
+//        System.out.println("pluto14 :" + count);
+//        mp.insert("GeeksForGeeks", 11);
+//        System.out.println("GeeksForGeeks :" + count);
         // Display search results
 //        System.out.println("Value of GeeksForGeeks: " + mp.search("GeeksForGeeks"));
 //        System.out.println("Value of ITT: " + mp.search("ITT"));
