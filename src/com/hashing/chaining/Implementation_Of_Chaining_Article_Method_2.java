@@ -34,10 +34,11 @@ class Node<T> {
 }
 
 // HashMap class (unordered_map equivalent)
- class UnorderedMap<T> {
+class UnorderedMap<T> {
 
     private int numOfElements, capacity;
     private Node<T>[] arr;
+    static int count;
 
     // Constructor
     public UnorderedMap() {
@@ -61,7 +62,8 @@ class Node<T> {
 
     // Get the load factor of the map
     private float getLoadFactor() {
-        return (float) (this.numOfElements + 1) / (float) this.capacity;
+        float ans = (float) (this.numOfElements + 1) / (float) this.capacity;
+        return ans;
     }
 
     // Rehashing function to resize and rehash the data when load factor exceeds 0.5
@@ -86,6 +88,7 @@ class Node<T> {
 
     // Insert a key-value pair into the hash map
     public void insert(String key, T value) {
+        count++;
         while (this.getLoadFactor() > 0.5f) { // If load factor exceeds 0.5, rehash
             this.rehashing();
         }
@@ -123,19 +126,24 @@ class Node<T> {
     public static void main(String[] args) {
         UnorderedMap<Integer> mp = new UnorderedMap<>(); // Integer values, String keys
         mp.insert("Manish", 16);
+        System.out.println("Manish :" + count);
         mp.insert("Vartika", 14);
+        System.out.println("Vartika :" + count);
         mp.insert("ITT", 5);
+        System.out.println("ITT :" + count);
         mp.insert("elite_Programmer", 4);
+        System.out.println("elite_Programmer :" + count);
         mp.insert("pluto14", 14);
+        System.out.println("pluto14 :" + count);
         mp.insert("GeeksForGeeks", 11);
-
+        System.out.println("GeeksForGeeks :" + count);
         // Display search results
-        System.out.println("Value of GeeksForGeeks: " + mp.search("GeeksForGeeks"));
-        System.out.println("Value of ITT: " + mp.search("ITT"));
-        System.out.println("Value of Manish: " + mp.search("Manish"));
-        System.out.println("Value of Vartika: " + mp.search("Vartika"));
-        System.out.println("Value of elite_Programmer: " + mp.search("elite_Programmer"));
-        System.out.println("Value of pluto14: " + mp.search("pluto14"));
+//        System.out.println("Value of GeeksForGeeks: " + mp.search("GeeksForGeeks"));
+//        System.out.println("Value of ITT: " + mp.search("ITT"));
+//        System.out.println("Value of Manish: " + mp.search("Manish"));
+//        System.out.println("Value of Vartika: " + mp.search("Vartika"));
+//        System.out.println("Value of elite_Programmer: " + mp.search("elite_Programmer"));
+//        System.out.println("Value of pluto14: " + mp.search("pluto14"));
 
         // Case when key is not present in Hash Map
         mp.search("GFG"); // Prints "Oops!! Data not found."
