@@ -51,14 +51,15 @@ class UnorderedMap<T> {
 
     // Hash function to map string key to an index
     private int hashFunction(String key) {
-        int bucketIndex;
-        long sum = 0, factor = 31;
-        for (int i = 0; i < key.length(); i++) {
-            sum = ((sum % this.capacity) + ((int) key.charAt(i) * factor) % this.capacity) % this.capacity;
-            factor = (factor * 31) % Integer.MAX_VALUE;
-        }
-        bucketIndex = (int) sum;
-        return bucketIndex;
+//        int bucketIndex;
+//        long sum = 0, factor = 31;
+//        for (int i = 0; i < key.length(); i++) {
+//            sum = ((sum % this.capacity) + ((int) key.charAt(i) * factor) % this.capacity) % this.capacity;
+//            factor = (factor * 31) % Integer.MAX_VALUE;
+//        }
+//        bucketIndex = (int) sum;
+//        return bucketIndex;
+        return 1;
     }
 
     // Get the load factor of the map
@@ -103,6 +104,7 @@ class UnorderedMap<T> {
             Node<T> newNode = new Node<>(key, value);
             newNode.next = this.arr[bucketIndex];
             this.arr[bucketIndex] = newNode;
+
         }
 
         this.numOfElements++; // Increase the count of elements
@@ -126,27 +128,22 @@ class UnorderedMap<T> {
 
     public static void main(String[] args) {
         UnorderedMap<Integer> mp = new UnorderedMap<>(); // Integer values, String keys
+        mp.insert("A", 10);
+        mp.insert("B", 16);
         mp.insert("Manish", 16);
-        System.out.println("Manish :" + count);
         mp.insert("Vartika", 14);
-        System.out.println("Vartika :" + count);
-//        mp.insert("ITT", 5);
-//        System.out.println("ITT :" + count);
-//        mp.insert("elite_Programmer", 4);
-//        System.out.println("elite_Programmer :" + count);
-//        mp.insert("pluto14", 14);
-//        System.out.println("pluto14 :" + count);
-//        mp.insert("GeeksForGeeks", 11);
-//        System.out.println("GeeksForGeeks :" + count);
+        mp.insert("ITT", 5);
+        mp.insert("elite_Programmer", 4);
+        mp.insert("pluto14", 14);
+        mp.insert("GeeksForGeeks", 11);
         // Display search results
-//        System.out.println("Value of GeeksForGeeks: " + mp.search("GeeksForGeeks"));
-//        System.out.println("Value of ITT: " + mp.search("ITT"));
-//        System.out.println("Value of Manish: " + mp.search("Manish"));
-//        System.out.println("Value of Vartika: " + mp.search("Vartika"));
-//        System.out.println("Value of elite_Programmer: " + mp.search("elite_Programmer"));
-//        System.out.println("Value of pluto14: " + mp.search("pluto14"));
-
-        // Case when key is not present in Hash Map
+        System.out.println("Value of GeeksForGeeks: " + mp.search("GeeksForGeeks"));
+        System.out.println("Value of ITT: " + mp.search("ITT"));
+        System.out.println("Value of Manish: " + mp.search("Manish"));
+        System.out.println("Value of Vartika: " + mp.search("Vartika"));
+        System.out.println("Value of elite_Programmer: " + mp.search("elite_Programmer"));
+        System.out.println("Value of pluto14: " + mp.search("pluto14"));
+//         Case when key is not present in Hash Map
         mp.search("GFG"); // Prints "Oops!! Data not found."
     }
 }
