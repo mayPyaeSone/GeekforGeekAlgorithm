@@ -39,7 +39,6 @@ class UnorderedMap<T> {
     private int numOfElements;
     private int capacity;
     private Node<T>[] arr;
-    static int count;
 
     // Constructor
     public UnorderedMap() {
@@ -90,7 +89,6 @@ class UnorderedMap<T> {
 
     // Insert a key-value pair into the hash map
     public void insert(String key, T value) {
-        count++;
         while (this.getLoadFactor() > 0.5f) { // If load factor exceeds 0.5, rehash
             this.rehashing();
         }
