@@ -12,6 +12,8 @@ package util.context;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReadPropertyFile {
 
@@ -37,5 +39,23 @@ public class ReadPropertyFile {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static String read(String fileName) {
+        Properties properties = new Properties();
+        String path = "";
+        try (InputStream input = ReadPropertyFile.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find config.properties");
+//                return;
+            }
+            properties.load(input);
+            path = properties.getProperty("inputFile");
+
+            // Read properties
+        } catch (IOException ex) {
+            Logger.getLogger(ReadPropertyFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return path;
     }
 }

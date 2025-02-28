@@ -7,6 +7,7 @@ package com.hashing;
 
 import java.util.Arrays;
 import util.context.Context;
+import util.context.ReadPropertyFile;
 import util.context.ReadTextFile;
 
 /**
@@ -19,20 +20,24 @@ public class Quadratic_Probing_In_Hashing {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        int arr_1[] = {21, 10, 32, 43};
-//        int hashSize_1 = 11, n_1 = 4;
-//        int hash_1[] = new int[hashSize_1];
-//        Arrays.fill(hash_1, -1);
-//        quadraticProbing(hash_1, hashSize_1, arr_1, n_1);
-//        Context.print1DArray(hash_1);
+        //Test Case 1
+        int arr_1[] = {21, 10, 32, 43};
+        int hashSize_1 = 11, n_1 = 4;
+        int hash_1[] = new int[hashSize_1];
+        Arrays.fill(hash_1, -1);
+        quadraticProbing(hash_1, hashSize_1, arr_1, n_1);
+        Context.print1DArray(hash_1);
+        
+        //Test Case 2
+        int hashSize_2 = 11, n_2 = 4, arr_2[] = {880, 995, 647, 172};
+        int hash_2[] = new int[hashSize_2];
+        Arrays.fill(hash_2, -1);
+        quadraticProbing(hash_2, hashSize_2, arr_2, n_2);
+        Context.print1DArray(hash_2);
 
-//        int hashSize_2 = 11, n_2 = 4, arr_2[] = {880, 995, 647, 172};
-//        int hash_2[] = new int[hashSize_2];
-//        Arrays.fill(hash_2, -1);
-//        quadraticProbing(hash_2, hashSize_2, arr_2, n_2);
-//        Context.print1DArray(hash_2);
-
-        int[] arr_3 = ReadTextFile.txtFileToArray("C:\\Users\\User\\Desktop\\temp\\codeOutput.txt");
+        //Test Case 3
+        ReadPropertyFile.read("inputFile");
+        int[] arr_3 = ReadTextFile.txtFileToArray(ReadPropertyFile.read("inputFile"));
         int hashSize_3 = 67;
         int hash_3[] = new int[hashSize_3];
         quadraticProbing(hash_3, hashSize_3, arr_3, arr_3.length);
