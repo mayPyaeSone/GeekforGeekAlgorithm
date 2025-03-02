@@ -19,9 +19,11 @@ public class Open_Addressing_Simple_With_Dummy {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
 }
+
 class HashNode {
+
     int key;
     int value;
 
@@ -31,8 +33,9 @@ class HashNode {
     }
 }
 
- class HashTable {
-    private static final int capacity = 20;
+class HashTable {
+
+    private static final int capacity = 10;
     private static int size = 0;
     private static HashNode[] arr;
     private static HashNode dummy;
@@ -41,10 +44,18 @@ class HashNode {
     public static void insert(int key, int value) {
         HashNode temp = new HashNode(key, value);
         int hashIndex = key % capacity;
-
+        int h = hashIndex;
+        if (size == capacity) {
+            System.out.println("It's beyound the capacity");
+            return;
+        }
         while (arr[hashIndex] != null && arr[hashIndex].key != key && arr[hashIndex].key != -1) {
             hashIndex++;
-            hashIndex %= capacity;
+            hashIndex = hashIndex % capacity;
+//            if (hashIndex == h) {
+//                System.out.println("It's beyound the capacity");
+//                return;
+//            }
         }
 
         if (arr[hashIndex] == null || arr[hashIndex].key == -1) {
@@ -56,7 +67,7 @@ class HashNode {
     // Function to delete a key-value pair
     public static boolean deleteKey(int key) {
         int hashIndex = key % capacity;
-
+        int h = hashIndex;
         while (arr[hashIndex] != null) {
             if (arr[hashIndex].key == key) {
                 arr[hashIndex] = dummy;
@@ -65,6 +76,9 @@ class HashNode {
             }
             hashIndex++;
             hashIndex %= capacity;
+            if (h == hashIndex) {
+                break;
+            }
         }
         return false;
     }
@@ -94,9 +108,17 @@ class HashNode {
         dummy = new HashNode(-1, -1);
 
         insert(1, 5);
+        insert(1, 3);
         insert(2, 15);
         insert(3, 20);
         insert(4, 7);
+        insert(5, 12);
+        insert(6, 13);
+        insert(7, 11);
+        insert(8, 11);
+        insert(9, 11);
+        insert(10, 11);
+        insert(11, 30);
 
         if (find(4) != -1) {
             System.out.println("Value of Key 4 = " + find(4));
@@ -109,12 +131,16 @@ class HashNode {
         } else {
             System.out.println("Key does not exist");
         }
-
+        deleteKey(4);
         if (find(4) != -1) {
             System.out.println("Value of Key 4 = " + find(4));
         } else {
             System.out.println("Key 4 does not exist");
         }
+        if (find(1) != -1) {
+            System.out.println("Value of Key 1 = " + find(1));
+        } else {
+            System.out.println("Key 1 does not exist");
+        }
     }
 }
-
