@@ -71,7 +71,8 @@ class Hash {
         for (int i = 0; i < n; i++) {
             h.insertItem(a[i]);
         }
-
+        h.insertItem(70);
+        
         // Delete 12 from the hash table
         h.deleteItem(12);
 

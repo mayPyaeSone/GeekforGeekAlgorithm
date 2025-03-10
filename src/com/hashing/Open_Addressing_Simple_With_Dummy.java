@@ -42,20 +42,15 @@ class HashTable {
 
     // Function to add key-value pair
     public static void insert(int key, int value) {
-        HashNode temp = new HashNode(key, value);
-        int hashIndex = key % capacity;
-        int h = hashIndex;
         if (size == capacity) {
             System.out.println("It's beyound the capacity");
             return;
         }
+        HashNode temp = new HashNode(key, value);
+        int hashIndex = key % capacity;
         while (arr[hashIndex] != null && arr[hashIndex].key != key && arr[hashIndex].key != -1) {
             hashIndex++;
             hashIndex = hashIndex % capacity;
-//            if (hashIndex == h) {
-//                System.out.println("It's beyound the capacity");
-//                return;
-//            }
         }
 
         if (arr[hashIndex] == null || arr[hashIndex].key == -1) {
