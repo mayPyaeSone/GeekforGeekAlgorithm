@@ -16,33 +16,32 @@ import java.util.HashSet;
 public class Test {
 
     public static void main(String[] args) {
-        int arr[] = {10, 34, 5, 10, 3, 5, 10};
-        createHashMap(arr);
+        //int arr[] = {12, 10, 9, 45, 2, 10, 10, 45};
+        int arr[] = {10, 20, 20, 10, 20};
+        int n = arr.length;
+        System.out.println(countDistinct(arr, n));
     }
+
     // Function to create HashMap from array
+    static int countDistinct(int arr[], int n) {
+        int res = 1;
 
-    static void createHashMap(int arr[]) {
-        // Creates an empty HashMap
-        HashMap<Integer, Integer> hmap = new HashMap<Integer, Integer>();
+        // Pick all elements one by one
+        for (int i = 1; i < n; i++) {
+            int j = 0;
+            for (j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    break;
+                }
+            }
 
-        // Traverse through the given array
-        for (int i = 0; i < arr.length; i++) {
-
-            // Get if the element is present
-            Integer c = hmap.get(arr[i]);
-
-            // If this is first occurrence of element
-            // Insert the element
-            if (hmap.get(arr[i]) == null) {
-                hmap.put(arr[i], 1);
-            } // If elements already exists in hash map
-            // Increment the count of element by 1
-            else {
-                hmap.put(arr[i], ++c);
+            // If not printed earlier, 
+            // then print it
+            if (i == j) {
+                res++;
             }
         }
-
-        // Print HashMap
-        System.out.println(hmap);
+        return res;
     }
+
 }
