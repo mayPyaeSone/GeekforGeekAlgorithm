@@ -88,7 +88,7 @@ public class Count_Distinct_Elements {
      * @return
      */
     static int countDistinct(int arr[], int n) {
-        Set<Integer> hs = new HashSet<Integer>();
+        Set<Integer> hs = new HashSet<>();
         for (int i = 0; i < n; i++) {
             hs.add(arr[i]);
         }

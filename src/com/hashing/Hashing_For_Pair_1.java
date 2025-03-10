@@ -27,7 +27,7 @@ public class Hashing_For_Pair_1 {
         //Test Case(1)
         int arr_1[] = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int sum_1 = 14;
-        System.out.println(sumExits(arr_1, sum_1));;
+        System.out.println(sumExists_2(arr_1, 10, sum_1));;
 
         //Test Case (2)
         int arr_2[] = new int[]{61, 14, 75, 71, 36, 34, 12};
@@ -36,7 +36,7 @@ public class Hashing_For_Pair_1 {
     }
 
     public static int sumExits(int arr[], int sum) {
-        HashSet<Integer> hs = new HashSet<Integer>();
+        HashSet<Integer> hs = new HashSet<>();
         for (int i : arr) {
             hs.add(i);
         }
@@ -44,7 +44,6 @@ public class Hashing_For_Pair_1 {
         for (int i = 0; i < arr.length; i++) {
             int y = sum - arr[i];
             if (y != arr[i] && hs.contains(y)) {
-                System.out.println(arr[i] + " + " + y);
                 return 1;
             }
         }
@@ -53,7 +52,7 @@ public class Hashing_For_Pair_1 {
     // Back-end complete function Template for C
 
 // Function to check if there is a pair with the given sum in the array.
-    int sumExists_2(int arr[], int N, int sum) {
+  static  int sumExists_2(int arr[], int N, int sum) {
         boolean s[] = new boolean[100001];
         for (int i = 0; i < 100001; i++) {
             s[i] = false;
