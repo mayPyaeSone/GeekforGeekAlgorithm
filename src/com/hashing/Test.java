@@ -6,8 +6,11 @@
 package com.hashing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -16,32 +19,32 @@ import java.util.HashSet;
 public class Test {
 
     public static void main(String[] args) {
-        //int arr[] = {12, 10, 9, 45, 2, 10, 10, 45};
-        int arr[] = {10, 20, 20, 10, 20};
-        int n = arr.length;
-        System.out.println(countDistinct(arr, n));
+
+        List<Student> students = Arrays.asList(
+                new Student("Alice", 22),
+                new Student("Bob", 20),
+                new Student("Charlie", 21),
+                new Student("aye", 12)
+        );
+
+        List<String> sortedNames = students.stream()
+                .map(student -> student.name)
+                .sorted(String::compareToIgnoreCase)
+                .collect(Collectors.toList());
+
+        System.out.println(sortedNames);
+
     }
 
-    // Function to create HashMap from array
-    static int countDistinct(int arr[], int n) {
-        int res = 1;
+}
 
-        // Pick all elements one by one
-        for (int i = 1; i < n; i++) {
-            int j = 0;
-            for (j = 0; j < i; j++) {
-                if (arr[i] == arr[j]) {
-                    break;
-                }
-            }
+class Student {
 
-            // If not printed earlier, 
-            // then print it
-            if (i == j) {
-                res++;
-            }
-        }
-        return res;
+    String name;
+    int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
-
 }
